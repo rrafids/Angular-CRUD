@@ -1,0 +1,65 @@
+<br><br><br>
+<div class="jumbotron">
+  <h3 style="margin-top: -20px;">Data</h3>
+  <br>
+  <input type="text" class="form-control"  placeholder="Search">
+  <br>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="'col">Id</th>
+      <th scope="col">Owner</th>
+      <th scope="col">Company Name</th>
+      <th scope="col">GST Number</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor = "let business of businesses">
+      <td scope="col">{{business._id}}</td>
+      <td scope="col">{{business.person_name}}</td>
+      <td scope="col">{{business.business_name}}</td>
+      <td scope="col">{{business.business_gst_number}}</td>
+      <td scope="col">
+        <a (click)="detailsBusiness(business)">
+          <button type="button" class="btn btn-primary" data-toggle="modal" href="#modalku">Show</button>
+        </a>
+        <a (click)="deleteBusiness(business._id)" style="margin: 5px;">
+          <button type="button" ngbAutofocus class="btn btn-danger"
+                  (click)="modal.close('Ok click')"><i class="white trash alternate icon"></i></button>
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a routerLink="/business/create" class="btn btn-primary" style="color: white;">+ Add</a>
+  <button (click)="refresh()" type="button" class="btn btn-secondary" style="margin: 15px;"><i class="sync icon"></i></button>
+</div>
+
+
+
+<div class="modal" id="modalku">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Details</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h5>Id: {{bisnis._id}}</h5>
+        <h5>Name: {{bisnis.person_name}}</h5>
+        <h5>Business Name: {{bisnis.business_name}}</h5>
+        <h5>GST Number: {{bisnis.business_gst_number}}</h5>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
